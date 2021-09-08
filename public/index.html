@@ -4,6 +4,10 @@
     <script lang="text/javascript" src="/socket.io/socket.io.js"></script>
     <script src="/simple-peer/simplepeer.min.js"></script>
     <style>
+        body {
+            background-color: #202124;
+        }
+
         .containers {
             display: grid;
             grid-gap: 5px;
@@ -12,12 +16,18 @@
         }
 
         .container {
-            display: flex;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .vid-item {
+            margin: 5px;
+            border-radius: 5px;
+            overflow: hidden;
         }
 
         .vid {
-            flex: 0 1 auto;
-            height: 400px;
+            width: 100%;
         }
 
         .settings {
@@ -37,7 +47,9 @@
 
 <body>
     <div id="videos" class="container">
-        <video id="localVideo" class="vid" autoplay muted></video>
+        <div class="vid-item">
+            <video id="localVideo" class="vid" autoplay muted></video>
+        </div>
     </div>
     <br />
     <div style="display:block">

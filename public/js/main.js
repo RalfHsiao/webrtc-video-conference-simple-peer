@@ -119,7 +119,8 @@ function removePeer(socket_id) {
         })
 
         videoEl.srcObject = null
-        videoEl.parentNode.removeChild(videoEl)
+        let videoItemEl = videoEl.parentNode
+        videoItemEl.parentNode.removeChild(videoItemEl)
     }
     if (peers[socket_id]) peers[socket_id].destroy()
     delete peers[socket_id]
@@ -156,7 +157,11 @@ function addPeer(socket_id, am_initiator) {
         newVid.className = "vid"
         newVid.onclick = () => openPictureMode(newVid)
         newVid.ontouchstart = (e) => openPictureMode(newVid)
-        videos.appendChild(newVid)
+
+        let newVidItem = document.createElement('div')
+        newVidItem.className = "vid-item"
+        newVidItem.appendChild(newVid)
+        videos.appendChild(newVidItem)
     })
 }
 
